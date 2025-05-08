@@ -1,0 +1,15 @@
+﻿.imageze {
+    height: 100px;
+    width: 100px;
+    background: #8e44ad;
+    padding: 3px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+.imageze .imgre {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
