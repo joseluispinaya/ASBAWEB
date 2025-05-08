@@ -13,3 +13,25 @@
     object-fit: cover;
     border: 2px solid #fff;
 }
+
+/*.imageze {
+    height: 100px;
+    width: 100px;
+    background: #8e44ad;
+    padding: 3px;
+    border-radius: 50%;
+    margin: 0 auto;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .imageze .imgre {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        display: block;
+    }*/

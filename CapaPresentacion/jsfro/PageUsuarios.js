@@ -56,6 +56,73 @@ function listaUsuarios() {
                                 </div>
                                 <div class="card-footer bg-transparent">
                                     <div class="row justify-content-between">
+                                        <a href="#" class="col-5 btn btn-sm btn-outline-primary mt-auto btn-editar" 
+                                        data-usuario='${JSON.stringify(usuario)}'>
+                                        <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a href="#" class="col-5 btn btn-sm btn-outline-danger mt-auto" 
+                                        onclick="eliminarUsua(${usuario.IdUsuario})">
+                                        <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+
+
+                    // Agregamos al contenedor
+                    $("#listar").append(cardHtml);
+                });
+
+            } else {
+                swal("Mensaje", response.d.Mensaje, "warning");
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            $("#loaddet").LoadingOverlay("hide");
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        }
+    });
+}
+
+function listaUsuariosdddd() {
+    $.ajax({
+        type: "POST",
+        url: "PageUsuarios.aspx/ObtenerUsuarios",
+        data: {},
+        dataType: "json",
+        contentType: 'application/json; charset=utf-8',
+        beforeSend: function () {
+            $("#loaddet").LoadingOverlay("show");
+        },
+        success: function (response) {
+            $("#loaddet").LoadingOverlay("hide");
+
+            if (response.d.Estado) {
+                var datos = response.d.Data;
+
+                // Limpiamos el contenedor por si hay datos previos
+                $("#listar").empty();
+
+                // Recorremos la lista y generamos el HTML
+                datos.forEach(function (usuario) {
+                    var cardHtml = `
+                        <div class="col mb-5">
+                            <div class="card h-100">
+                                <div class="card-body p-4">
+                                    <div class="d-flex justify-content-center mb-3">
+                                        <div class="imageze">
+                                            <img class="imgre" src="${usuario.ImageFull}" alt="Foto usuario">
+                                        </div>
+                                    </div>
+                                    <div class="text-start" style="font-size:14px">
+                                        <p class="m-1"><b>Nombre: </b>${usuario.Nombres}</p>
+                                        <p class="m-1"><b>Apellido: </b>${usuario.Apellidos}</p>
+                                        <p class="m-1"><b>Correo: </b>${usuario.Correo}</p>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-transparent">
+                                    <div class="row justify-content-between">
                                         <a class="col-5 btn btn-sm btn-outline-primary mt-auto" href="#" onclick="verEditar(${usuario.IdUsuario})"><i class="fas fa-pencil-alt"></i></a>
                                         <a class="col-5 btn btn-sm btn-outline-danger mt-auto" href="#" onclick="eliminarUsua(${usuario.IdUsuario})"><i class="fas fa-trash-alt"></i></a>
                                     </div>
@@ -118,8 +185,6 @@ function mostrarImagenSeleccionada(input) {
     } else {
         $('#imgUsuarioMx').attr('src', "Imagenes/sinimagen.png");
     }
-
-
 }
 
 $('#txtFoto').change(function () {
@@ -154,14 +219,21 @@ function mostrarModal(modelo, cboEstadoDeshabilitado = true) {
     $("#modalData").modal("show");
 }
 
-function verEditar(IdUsuario) {
-    swal("Mensaje", "Editar a ID: " + IdUsuario, "success")
-    //console.log("Ver detalle con ID: " + IdUsuario);
-    //mi logica
-}
+$(document).on("click", ".btn-editar", function (e) {
+    e.preventDefault();
+
+    var usuarioStr = $(this).attr("data-usuario");
+    var usuario = JSON.parse(usuarioStr);
+    mostrarModal(usuario, false);
+    //verEditar(usuario);
+});
+
+//function verEditar(usuario) {
+//    console.log("Usuario completo:", usuario);
+//}
+
 
 function eliminarUsua(IdUsuario) {
-    //console.log("Eliminar a ID: " + IdUsuario);
     swal("Mensaje", "Eliminar a ID: " + IdUsuario, "warning")
     //mi logica
 }
@@ -251,6 +323,87 @@ function registerDataUser() {
     }
 }
 
+function sendDataToServerEditU(request) {
+    $.ajax({
+        type: "POST",
+        url: "PageUsuarios.aspx/EditarUsuario",
+        data: JSON.stringify(request),
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        beforeSend: function () {
+            $(".modal-content").LoadingOverlay("show");
+        },
+        success: function (response) {
+            $(".modal-content").LoadingOverlay("hide");
+            if (response.d.Estado) {
+                listaUsuarios();
+                $('#modalData').modal('hide');
+                swal("Mensaje", response.d.Mensaje, "success");
+            } else {
+                swal("Mensaje", response.d.Mensaje, "warning");
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            $(".modal-content").LoadingOverlay("hide");
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        },
+        complete: function () {
+            // Rehabilitar el botón después de que la llamada AJAX se complete (éxito o error)
+            $('#btnGuardarCambios').prop('disabled', false);
+        }
+    });
+}
+
+function editarDataAjaxU() {
+    var fileInput = document.getElementById('txtFoto');
+    var file = fileInput.files[0];
+
+    const modelo = structuredClone(MODELO_BASE);
+    modelo["IdUsuario"] = parseInt($("#txtIdUsuario").val());
+    modelo["IdRol"] = $("#cboRol").val();
+    modelo["Nombres"] = $("#txtNombre").val().trim();
+    modelo["Apellidos"] = $("#txtapellido").val().trim();
+    modelo["Correo"] = $("#txtCorreo").val().trim();
+    modelo["Clave"] = $("#txtClave").val().trim();
+    modelo["Celular"] = $("#txtCelular").val().trim();
+    modelo["Activo"] = ($("#cboEstado").val() == "1" ? true : false);
+
+    if (file) {
+
+        var maxSize = 2 * 1024 * 1024; // 2 MB en bytes
+        if (file.size > maxSize) {
+            swal("Mensaje", "La imagen seleccionada es demasiado grande max 1.5 Mb.", "warning");
+            // Rehabilitar el botón si hay un error de validación
+            $('#btnGuardarCambios').prop('disabled', false);
+            return;
+        }
+
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            var arrayBuffer = e.target.result;
+            var bytes = new Uint8Array(arrayBuffer);
+
+            var request = {
+                oUsuario: modelo,
+                imageBytes: Array.from(bytes)
+            };
+
+            sendDataToServerEditU(request);
+        };
+
+        reader.readAsArrayBuffer(file);
+    } else {
+        // Si no se selecciona ningún archivo, envía un valor nulo o vacío para imageBytes
+        var request = {
+            oUsuario: modelo,
+            imageBytes: null // o cualquier otro valor que indique que no se envió ningún archivo
+        };
+
+        sendDataToServerEditU(request);
+    }
+}
+
 $('#btnGuardarCambios').on('click', function () {
 
     // Deshabilitar el botón para evitar múltiples envíos
@@ -274,9 +427,6 @@ $('#btnGuardarCambios').on('click', function () {
     if (parseInt($("#txtIdUsuario").val()) === 0) {
         registerDataUser();
     } else {
-        swal("Mensaje", "Falta para Actualizar personal.", "warning")
-        // Rehabilitar el botón en caso de advertencia
-        $('#btnGuardarCambios').prop('disabled', false);
-        //editarDataAjaxU();
+        editarDataAjaxU();
     }
 })
