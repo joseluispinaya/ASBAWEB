@@ -69,12 +69,15 @@
   <ItemGroup>
     <Content Include="Asociacion.aspx" />
     <Content Include="css\cardzer.css" />
+    <Content Include="css\imgper\logologin.jpg" />
     <Content Include="css\sb-admin-2.css" />
     <Content Include="css\sb-admin-2.min.css" />
     <Content Include="Imagenes\capturaqr.png" />
     <Content Include="Imagenes\img1.jpeg" />
     <Content Include="Imagenes\img2.jpeg" />
     <Content Include="Imagenes\imgjo.jpg" />
+    <Content Include="Imagenes\logologin.jpg" />
+    <Content Include="Imagenes\reportt.png" />
     <Content Include="Imagenes\sinimagen.png" />
     <Content Include="img\undraw_posting_photo.svg" />
     <Content Include="img\undraw_profile.svg" />
@@ -83,16 +86,21 @@
     <Content Include="img\undraw_profile_3.svg" />
     <Content Include="img\undraw_rocket.svg" />
     <Content Include="Inicio.aspx" />
+    <Content Include="jsfro\Login.js" />
+    <Content Include="jsfro\MasterPa.js" />
     <Content Include="jsfro\PageUsuarios.js" />
+    <Content Include="jsfro\PerfilUser.js" />
     <Content Include="js\sb-admin-2.js" />
     <Content Include="js\sb-admin-2.min.js" />
     <Content Include="js\vistas\chart-bar-demo.js" />
     <Content Include="js\vistas\chart-pie-demo.js" />
     <Content Include="js\vistas\datatables-demo.js" />
+    <Content Include="Login.aspx" />
     <Content Include="PageCamiones.aspx" />
     <Content Include="PageDestinos.aspx" />
     <Content Include="PageUsuarios.aspx" />
     <Content Include="Paginas.aspx" />
+    <Content Include="PerfilUser.aspx" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="vendor\bootstrap\js\bootstrap.js" />
@@ -1803,6 +1811,13 @@
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1837,6 +1852,13 @@
     </Compile>
     <Compile Include="Paginas.aspx.designer.cs">
       <DependentUpon>Paginas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PerfilUser.aspx.cs">
+      <DependentUpon>PerfilUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PerfilUser.aspx.designer.cs">
+      <DependentUpon>PerfilUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilidadesj.cs" />

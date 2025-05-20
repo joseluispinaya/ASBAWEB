@@ -430,3 +430,104 @@ $('#btnGuardarCambios').on('click', function () {
         editarDataAjaxU();
     }
 })
+
+function ReporteUsua(dataVenta) {
+    var props = {
+        outputType: jsPDFInvoiceTemplate.OutputType.Save,
+        returnJsPDFDocObject: true,
+        fileName: "Reporte_Usuarios_2025",
+        orientationLandscape: false,
+        //compress: true,
+        logo: {
+            src: "../Imagenes/reportt.png",
+            type: 'PNG', //optional, when src= data:uri (nodejs case)
+            width: 53.33, //aspect ratio = width/height
+            height: 26.66,
+            margin: {
+                top: 0, //negative or positive num, from the current position
+                left: 0 //negative or positive num, from the current position
+            }
+        },
+        business: {
+            name: "ASBA-SRL",
+            address: "Shinahota Cochabamba",
+            phone: "+591 73999726",
+            email: "Exportaciones",
+            email_1: "asba_srl@gmail.com",
+            website: "www.asba_srl.com",
+        },
+        contact: {
+            label: "Reporte de Usuarios:",
+            name: "Registrados",
+            address: "Departamento de sistemas",
+            phone: "Soporte tecnico",
+            email: "soporte_asba@gmail.com",
+            otherInfo: "Codigo interno /0002",
+        },
+        invoice: {
+            label: "Nro #: ",
+            num: "- R0002",
+            invDate: "25/05/2025",
+            invGenDate: "25/05/2025",
+            headerBorder: false,
+            tableBodyBorder: false,
+            header: ["Nombres", "Apellidos", "Correo", "Celular"],
+            table: dataVenta.map((item, index) => [
+                item.Nombres,
+                item.Apellidos,
+                item.Correo,
+                item.Celular
+            ]),
+            invTotalLabel: "Total Reg:",
+            invTotal: "5",
+            invCurrency: "REG",
+            row1: {
+                col1: 'Nro Reg:',
+                col2: '0005',
+                col3: 'Ref',
+                style: {
+                    fontSize: 10 //optional, default 12
+                }
+            },
+            invDescLabel: "Gracias por usar nuestro sistema",
+            invDesc: "Reporte interno de uso solo para socios Shinahota-Cochabamba-Bolivia.",
+        },
+        footer: {
+            text: "Este es un documento generado automáticamente.",
+        },
+        pageEnable: true,
+        pageLabel: "Page ",
+    };
+
+    var pdfObject = jsPDFInvoiceTemplate.default(props);
+    console.log(pdfObject);
+}
+
+function cargarDetalleUsuairos() {
+
+    $.ajax({
+        type: "POST",
+        url: "PageUsuarios.aspx/ObtenerUsuarios",
+        data: {},
+        contentType: 'application/json; charset=utf-8',
+        dataType: "json",
+        success: function (response) {
+            if (response.d.Estado) {
+                var detalle = response.d.Data;
+                console.log(detalle)
+                ReporteUsua(detalle)
+                //swal("Mensaje", response.d.Mensaje, "success");
+
+            } else {
+                swal("Mensaje", response.d.Mensaje, "warning");
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
+        }
+    });
+}
+
+$('#btnReporte').on('click', function () {
+    cargarDetalleUsuairos();
+})

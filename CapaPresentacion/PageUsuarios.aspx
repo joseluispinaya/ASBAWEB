@@ -93,5 +93,6 @@
 </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <script src="https://unpkg.com/jspdf-invoice-template@1.3.1/dist/index.js"></script>
     <script src="jsfro/PageUsuarios.js" type="text/javascript"></script>
 </asp:Content>
