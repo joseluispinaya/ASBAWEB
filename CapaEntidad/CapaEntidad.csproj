@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EProductor.cs" />
     <Compile Include="ERol.cs" />
     <Compile Include="EUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

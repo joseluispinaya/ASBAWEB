@@ -88,6 +88,7 @@
     <Content Include="Inicio.aspx" />
     <Content Include="jsfro\Login.js" />
     <Content Include="jsfro\MasterPa.js" />
+    <Content Include="jsfro\PageProductores.js" />
     <Content Include="jsfro\PageUsuarios.js" />
     <Content Include="jsfro\PerfilUser.js" />
     <Content Include="js\sb-admin-2.js" />
@@ -98,6 +99,7 @@
     <Content Include="Login.aspx" />
     <Content Include="PageCamiones.aspx" />
     <Content Include="PageDestinos.aspx" />
+    <Content Include="PageProductores.aspx" />
     <Content Include="PageUsuarios.aspx" />
     <Content Include="Paginas.aspx" />
     <Content Include="PerfilUser.aspx" />
@@ -1838,6 +1840,13 @@
     </Compile>
     <Compile Include="PageDestinos.aspx.designer.cs">
       <DependentUpon>PageDestinos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageProductores.aspx.cs">
+      <DependentUpon>PageProductores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageProductores.aspx.designer.cs">
+      <DependentUpon>PageProductores.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageUsuarios.aspx.cs">
       <DependentUpon>PageUsuarios.aspx</DependentUpon>

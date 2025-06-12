@@ -51,18 +51,9 @@
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user" id="txtpassword" value="123456" placeholder="Contraseña">
                                         </div>
-                                        <%--<div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="chkMantenerSesion">
-                                                <label class="custom-control-label" for="chkMantenerSesion">Pinaya1989 luisp@yopmail.com</label>
-                                            </div>
-                                        </div>--%>
 
                                         <button type="button" class="btn btn-success btn-user btn-block" id="ingrsarLo">INGRESAR</button>
-										<%--<a class="btn btn-primary btn-user btn-block" href="#">Ingresar</a>--%>
-                                        <!-- <button type="submit" class="btn btn-primary btn-user btn-block">
-                                            Ingresar 
-                                        </button> -->
+										
                                     </form>
                                     <hr>
                                     <div class="text-center">

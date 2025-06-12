@@ -72,6 +72,13 @@
                 </div>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="PageProductores.aspx">
+                    <i class="fas fa-fw fa-id-card"></i>
+                    <span>Productores</span></a>
+            </li>
+
+
             <!-- Nav Item - Inventario Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventario">
@@ -80,7 +87,6 @@
                 </a>
                 <div id="collapseInventario" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Productores</a>
                         <a class="collapse-item" href="#">Nuevo Pagaduria</a>
                         <a class="collapse-item" href="#">Historial Pagaduria</a>
                     </div>
