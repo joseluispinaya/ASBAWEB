@@ -47,5 +47,10 @@ namespace CapaNegocio
         {
             return DProductor.GetInstance().ObtenerProductoresFiltro(Busqueda);
         }
+
+        public Respuesta<List<ETipoBanana>> ListaTipoBanana()
+        {
+            return DProductor.GetInstance().ListaTipoBanana();
+        }
     }
 }

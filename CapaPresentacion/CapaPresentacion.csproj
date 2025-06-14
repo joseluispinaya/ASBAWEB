@@ -78,6 +78,7 @@
     <Content Include="Imagenes\imgjo.jpg" />
     <Content Include="Imagenes\logologin.jpg" />
     <Content Include="Imagenes\reportt.png" />
+    <Content Include="Imagenes\selectedd.jpg" />
     <Content Include="Imagenes\sinimagen.png" />
     <Content Include="img\undraw_posting_photo.svg" />
     <Content Include="img\undraw_profile.svg" />
@@ -88,6 +89,7 @@
     <Content Include="Inicio.aspx" />
     <Content Include="jsfro\Login.js" />
     <Content Include="jsfro\MasterPa.js" />
+    <Content Include="jsfro\PagePagaduria.js" />
     <Content Include="jsfro\PageProductores.js" />
     <Content Include="jsfro\PageUsuarios.js" />
     <Content Include="jsfro\PerfilUser.js" />
@@ -99,6 +101,7 @@
     <Content Include="Login.aspx" />
     <Content Include="PageCamiones.aspx" />
     <Content Include="PageDestinos.aspx" />
+    <Content Include="PagePagaduria.aspx" />
     <Content Include="PageProductores.aspx" />
     <Content Include="PageUsuarios.aspx" />
     <Content Include="Paginas.aspx" />
@@ -1788,6 +1791,7 @@
     <Content Include="vendor\jquery\jquery.min.js" />
     <Content Include="vendor\jquery\jquery.slim.js" />
     <Content Include="vendor\jquery\jquery.slim.min.js" />
+    <Content Include="vendor\jspdfzero\jspdfzero.js" />
     <Content Include="vendor\loadingoverlay\loadingoverlay.min.js" />
     <Content Include="vendor\select2\es.min.js" />
     <Content Include="vendor\select2\select2.min.css" />
@@ -1840,6 +1844,13 @@
     </Compile>
     <Compile Include="PageDestinos.aspx.designer.cs">
       <DependentUpon>PageDestinos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PagePagaduria.aspx.cs">
+      <DependentUpon>PagePagaduria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PagePagaduria.aspx.designer.cs">
+      <DependentUpon>PagePagaduria.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageProductores.aspx.cs">
       <DependentUpon>PageProductores.aspx</DependentUpon>

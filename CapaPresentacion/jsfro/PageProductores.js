@@ -17,9 +17,36 @@ function ObtenerFecha() {
     return `${day}/${month}/${d.getFullYear()}`;
 }
 
+function esCorreoValido(correo) {
+    var emailRegex = /^[a-zA-Z0-9._%+-ñÑáéíóúÁÉÍÓÚ]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return correo !== "" && emailRegex.test(correo);
+}
+
 $(document).ready(function () {
 
     listaProductores();
+
+    $("#txtCorreo").on("input", function () {
+        const correo = $(this).val().trim();
+        const $correoFeedback = $("#correo-feedback");
+
+        if (correo === "") {
+            $correoFeedback.removeClass("valid invalid").text("");
+            return;
+        }
+
+        if (esCorreoValido(correo)) {
+            $correoFeedback
+                .removeClass("invalid")
+                .addClass("valid")
+                .text("✅");
+        } else {
+            $correoFeedback
+                .removeClass("valid")
+                .addClass("invalid")
+                .text("❌");
+        }
+    });
 
 });
 
@@ -66,7 +93,7 @@ function listaProductores() {
                 "defaultContent": '<button class="btn btn-primary btn-editar btn-sm"><i class="fas fa-pencil-alt"></i></button>',
                 "orderable": false,
                 "searchable": false,
-                "width": "50px"
+                "width": "100px"
             }
         ],
         "order": [[0, "desc"]],
@@ -75,6 +102,33 @@ function listaProductores() {
         }
     });
 }
+
+$.fn.inputFilter = function (inputFilter) {
+    return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function (e) { // Captura el evento como 'e'
+        if (inputFilter(this.value) || e.key === "Backspace" || e.key === " ") { // Se usa 'e' en lugar de 'event'
+            this.oldValue = this.value;
+            this.oldSelectionStart = this.selectionStart;
+            this.oldSelectionEnd = this.selectionEnd;
+        } else if (this.hasOwnProperty("oldValue")) {
+            this.value = this.oldValue;
+            this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+        } else {
+            this.value = "";
+        }
+    });
+};
+
+$("#txtNombre").inputFilter(function (value) {
+    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+});
+
+$("#txtCelular").inputFilter(function (value) {
+    return /^\d*$/.test(value) && value.length <= 8;
+});
+
+$("#txtnroci").inputFilter(function (value) {
+    return /^\d*$/.test(value) && value.length <= 10;
+});
 
 function mostrarModal(modelo, cboEstadoDeshabilitado = true) {
     // Verificar si modelo es null
@@ -94,6 +148,9 @@ function mostrarModal(modelo, cboEstadoDeshabilitado = true) {
     } else {
         $("#myTitulopr").text("Editar Productor");
     }
+
+    const $correoFeedback = $("#correo-feedback");
+    $correoFeedback.removeClass("valid invalid").text("");
 
     $("#modalProducto").modal("show");
 }
@@ -199,10 +256,15 @@ function editarProductor() {
             console.log(xhr.status + " \n" + xhr.responseText, "\n" + thrownError);
         },
         complete: function () {
-            // Rehabilitar el botón después de que la llamada AJAX se complete (éxito o error)
-            $('#btnGuardarCambios').prop('disabled', false);
+            habilitarBoton();
+            //$('#btnGuardarCambios').prop('disabled', false);
         }
     });
+}
+
+
+function habilitarBoton() {
+    $('#btnGuardarCambios').prop('disabled', false);
 }
 
 $('#btnGuardarCambios').on('click', function () {
@@ -211,17 +273,46 @@ $('#btnGuardarCambios').on('click', function () {
     $('#btnGuardarCambios').prop('disabled', true);
 
     const inputs = $("input.input-validar").serializeArray();
-    const inputs_sin_valor = inputs.filter((item) => item.value.trim() == "")
+    const inputs_sin_valor = inputs.filter((item) => item.value.trim() === "");
 
     if (inputs_sin_valor.length > 0) {
-        const mensaje = `Debe completar el campo : "${inputs_sin_valor[0].name}"`;
-        toastr.warning("", mensaje)
-        $(`input[name="${inputs_sin_valor[0].name}"]`).focus()
+        const campo = inputs_sin_valor[0].name;
+        const $inputVacio = $(`input[name="${campo}"]`);
 
-        // Rehabilitar el botón si hay campos vacíos
-        $('#btnGuardarCambios').prop('disabled', false);
+        toastr.warning("", `Debe completar el campo: "${campo}"`);
+
+        $inputVacio.addClass("input-error");
+        setTimeout(() => $inputVacio.removeClass("input-error"), 500);
+        $inputVacio.focus();
+
+        habilitarBoton();
         return;
     }
+
+    //const correo = $("#txtCorreo").val().trim();
+    //const $correoFeedback = $("#correo-feedback");
+
+    //if (!esCorreoValido(correo)) {
+    //    toastr.warning("", "Debe ingresar un Correo válido");
+
+    //    const $inputCorreo = $("#txtCorreo");
+    //    $inputCorreo.addClass("input-error");
+    //    setTimeout(() => $inputCorreo.removeClass("input-error"), 500);
+    //    $inputCorreo.focus();
+
+    //    $correoFeedback
+    //        .removeClass("valid")
+    //        .addClass("invalid")
+    //        .text("❌");
+
+    //    habilitarBoton();
+    //    return;
+    //} else {
+    //    $correoFeedback
+    //        .removeClass("invalid")
+    //        .addClass("valid")
+    //        .text("✅");
+    //}
 
     if (parseInt($("#txtIdProductor").val()) === 0) {
         registrarProductor();

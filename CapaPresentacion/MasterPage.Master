@@ -87,7 +87,7 @@
                 </a>
                 <div id="collapseInventario" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Nuevo Pagaduria</a>
+                        <a class="collapse-item" href="PagePagaduria.aspx">Nuevo Pagaduria</a>
                         <a class="collapse-item" href="#">Historial Pagaduria</a>
                     </div>
                 </div>

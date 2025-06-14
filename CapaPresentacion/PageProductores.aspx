@@ -1,5 +1,81 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="PageProductores.aspx.cs" Inherits="CapaPresentacion.PageProductores" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        #tbproductores thead th {
+            background-color: #4e73df; /* azul SB Admin 2 */
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        #tbproductores tbody td {
+            vertical-align: middle;
+        }
+
+        #tbproductores tbody tr {
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+            #tbproductores tbody tr:hover {
+                background-color: #d1e7dd; /* verde claro tipo success */
+            }
+
+                #tbproductores tbody tr:hover td {
+                    color: #1b4f2c; /* verde más oscuro */
+                }
+
+        .input-error {
+            border: 2px solid #e74a3b !important;
+            animation: shake 0.3s;
+        }
+
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-4px);
+            }
+
+            50% {
+                transform: translateX(4px);
+            }
+
+            75% {
+                transform: translateX(-4px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+        .position-relative {
+            position: relative;
+        }
+
+        .icon-feedback {
+            position: absolute;
+            top: 38px;
+            right: 10px;
+            font-size: 1.2rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+            .icon-feedback.valid {
+                color: #28a745; /* verde */
+                opacity: 1;
+            }
+
+            .icon-feedback.invalid {
+                color: #e74a3b; /* rojo */
+                opacity: 1;
+            }
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="body" runat="server">
     <div class="card shadow mb-4">
@@ -18,12 +94,12 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Nombre Completo</th>
-                                <th>Nro CI</th>
-                                <th>Contacto</th>
-                                <th>Correo</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
+                                <th><i class="fas fa-user mr-1"></i>Nombre Completo</th>
+                                <th><i class="fas fa-id-card mr-1"></i>Nro CI</th>
+                                <th><i class="fas fa-phone-alt mr-1"></i>Contacto</th>
+                                <th><i class="fas fa-envelope mr-1"></i>Correo</th>
+                                <th><i class="fas fa-toggle-on mr-1"></i>Estado</th>
+                                <th><i class="fas fa-tools mr-1"></i>Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,9 +136,10 @@
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="form-group col-sm-6">
+                                <div class="form-group col-sm-6 position-relative">
                                     <label for="txtCorreo">Correo</label>
                                     <input type="email" class="form-control form-control-sm input-validar" id="txtCorreo" name="Correo">
+                                    <span class="icon-feedback" id="correo-feedback"></span>
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="txtCelular">Celular</label>
@@ -92,6 +169,7 @@
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    <script src="https://unpkg.com/jspdf-invoice-template@1.3.1/dist/index.js"></script>
+    <%--<script src="https://unpkg.com/jspdf-invoice-template@1.3.1/dist/index.js"></script>--%>
+    <script src="vendor/jspdfzero/jspdfzero.js"></script>
     <script src="jsfro/PageProductores.js" type="text/javascript"></script>
 </asp:Content>

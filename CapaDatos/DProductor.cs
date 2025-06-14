@@ -270,5 +270,49 @@ namespace CapaDatos
                 };
             }
         }
+
+        public Respuesta<List<ETipoBanana>> ListaTipoBanana()
+        {
+            try
+            {
+                List<ETipoBanana> rptLista = new List<ETipoBanana>();
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerTiposBanana", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new ETipoBanana()
+                                {
+                                    IdTipoBanana = Convert.ToInt32(dr["IdTipoBanana"]),
+                                    Descripcion = dr["Descripcion"].ToString(),
+                                    Activo = Convert.ToBoolean(dr["Activo"])
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<ETipoBanana>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Tipos obtenidos correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                return new Respuesta<List<ETipoBanana>>()
+                {
+                    Estado = false,
+                    Mensaje = "Ocurrió un error: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
     }
 }

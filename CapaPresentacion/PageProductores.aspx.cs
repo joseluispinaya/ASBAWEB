@@ -18,6 +18,27 @@ namespace CapaPresentacion
 		}
 
         [WebMethod]
+        public static Respuesta<List<EProductor>> ObtenerProductoresFiltro(string busqueda)
+        {
+            try
+            {
+                var Lista = NProductor.GetInstance().ObtenerProductoresFiltro(busqueda);
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<EProductor>>()
+                {
+                    Estado = false,
+                    Mensaje = "Error al obtener los usuarios: " + ex.Message,
+                    Data = null
+                };
+            }
+
+        }
+
+        [WebMethod]
         public static Respuesta<List<EProductor>> ListaProductores()
         {
             try
