@@ -41,7 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EDetallePagaduria.cs" />
+    <Compile Include="EPagaduria.cs" />
     <Compile Include="EProductor.cs" />
+    <Compile Include="EReportePagaduria.cs" />
     <Compile Include="ERol.cs" />
     <Compile Include="ETipoBanana.cs" />
     <Compile Include="EUsuario.cs" />

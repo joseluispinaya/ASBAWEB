@@ -115,6 +115,7 @@
                 </a>
                 <div id="collapseReportes" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="PageReportePagadu.aspx">Reporte Pagaduria</a>
                         <a class="collapse-item" href="#">Reporte Exportacion</a>
                     </div>
                 </div>

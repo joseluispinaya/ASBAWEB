@@ -91,6 +91,7 @@
     <Content Include="jsfro\MasterPa.js" />
     <Content Include="jsfro\PagePagaduria.js" />
     <Content Include="jsfro\PageProductores.js" />
+    <Content Include="jsfro\PageReportePagadu.js" />
     <Content Include="jsfro\PageUsuarios.js" />
     <Content Include="jsfro\PerfilUser.js" />
     <Content Include="js\sb-admin-2.js" />
@@ -103,6 +104,7 @@
     <Content Include="PageDestinos.aspx" />
     <Content Include="PagePagaduria.aspx" />
     <Content Include="PageProductores.aspx" />
+    <Content Include="PageReportePagadu.aspx" />
     <Content Include="PageUsuarios.aspx" />
     <Content Include="Paginas.aspx" />
     <Content Include="PerfilUser.aspx" />
@@ -1858,6 +1860,13 @@
     </Compile>
     <Compile Include="PageProductores.aspx.designer.cs">
       <DependentUpon>PageProductores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageReportePagadu.aspx.cs">
+      <DependentUpon>PageReportePagadu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageReportePagadu.aspx.designer.cs">
+      <DependentUpon>PageReportePagadu.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageUsuarios.aspx.cs">
       <DependentUpon>PageUsuarios.aspx</DependentUpon>
