@@ -50,6 +50,9 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
+    <script src="vendor/jspdfzero/jspdfzero.js"></script>
+    <%--<script src="https://unpkg.com/jspdf-invoice-template@1.3.1/dist/index.js"></script>--%>
+    <%--<script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>--%>
     <script src="vendor/jquery-ui/jquery-ui.js"></script>
     <script src="vendor/jquery-ui/idioma/datepicker-es.js"></script>
     <script src="jsfro/PageReportePagadu.js" type="text/javascript"></script>

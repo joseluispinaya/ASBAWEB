@@ -36,5 +36,43 @@ namespace CapaPresentacion
                 };
             }
         }
+
+        [WebMethod]
+        public static Respuesta<List<EReportePagaduria>> PagaduriaRpt(string fechainicio, string fechafin)
+        {
+
+            try
+            {
+                if (string.IsNullOrEmpty(fechainicio) || string.IsNullOrEmpty(fechafin))
+                {
+                    return new Respuesta<List<EReportePagaduria>>()
+                    {
+                        Estado = false,
+                        Mensaje = "Ingrese las fechas para la consulta",
+                        Data = null
+                    };
+
+                }
+
+                // Intenta convertir las cadenas de fecha en objetos DateTime ret dd mm yy
+                //desde = DateTime.ParseExact(fechainicio, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                //hasta = DateTime.ParseExact(fechafin, "MM/dd/yyyy", CultureInfo.InvariantCulture);
+                Respuesta<List<EReportePagaduria>> Lista = NPagaduria.GetInstance().PagaduriaRpt(fechainicio, fechafin);
+                return Lista;
+
+
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<EReportePagaduria>>()
+                {
+                    Estado = false,
+                    Mensaje = "Error al obtener los productores: " + ex.Message,
+                    Data = null
+                };
+            }
+
+        }
     }
 }

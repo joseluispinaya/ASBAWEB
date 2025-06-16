@@ -254,5 +254,62 @@ namespace CapaDatos
                 };
             }
         }
+
+        public Respuesta<List<EReportePagaduria>> PagaduriaRpt(string FechaInicio, string FechaFin)
+        {
+            try
+            {
+                List<EReportePagaduria> rptLista = new List<EReportePagaduria>();
+
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("sp_PagaduriaDetalleReporte", con))
+                    {
+                        comando.Parameters.AddWithValue("@FechaInicio", FechaInicio);
+                        comando.Parameters.AddWithValue("@FechaFin", FechaFin);
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new EReportePagaduria()
+                                {
+                                    IdPagaduria = Convert.ToInt32(dr["IdPagaduria"]),
+                                    Codigo = dr["Codigo"].ToString(),
+                                    FechaRegistro = dr["FechaRegistro"].ToString(),
+                                    Productor = dr["Productor"].ToString(),
+                                    Producto = dr["BANANAS"].ToString(),
+                                    CantidadTotal = Convert.ToInt32(dr["CantidadTotal"]),
+                                    TotalCalculado = float.Parse(dr["TotalCalculado"].ToString()),
+                                    Descuento = float.Parse(dr["Descuento"].ToString()),
+                                    DolarCambio = float.Parse(dr["DolarCambio"].ToString()),
+                                    TotalPagado = float.Parse(dr["TotalPagado"].ToString()),
+                                    TotalDolares = float.Parse(dr["TotalDolares"].ToString())
+
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<EReportePagaduria>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Lista obtenidos correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<EReportePagaduria>>()
+                {
+                    Estado = false,
+                    Mensaje = "Ocurrió un error: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
     }
 }

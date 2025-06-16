@@ -20,8 +20,10 @@ namespace CapaEntidad
         // totalpagado en bs con descuento
         public float TotalPagado { get; set; }
         public float TotalDolares { get; set; }
+        public string DolarStr => DolarCambio.ToString("0.00") + " USD";
         public string TotalDolarStr => TotalDolares.ToString("0.00") + " USD";
-        public string TotalCalcuStr => TotalCalculado.ToString("0.00") + " BS";
+        public string TotalCalcuStr => "   " + TotalCalculado.ToString("0.00") + " BS";
         public string DescuentoStr => Descuento.ToString("0.00") + " BS";
+        public string TotalPaBsStr => TotalPagado.ToString("0.00") + " BS";
     }
 }

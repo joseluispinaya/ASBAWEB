@@ -42,5 +42,11 @@ namespace CapaNegocio
         {
             return DPagaduria.GetInstance().ListaPagaduriaRpt();
         }
+
+        public Respuesta<List<EReportePagaduria>> PagaduriaRpt(string FechaInicio, string FechaFin)
+        {
+            return DPagaduria.GetInstance().PagaduriaRpt(FechaInicio, FechaFin);
+        }
+
     }
 }
