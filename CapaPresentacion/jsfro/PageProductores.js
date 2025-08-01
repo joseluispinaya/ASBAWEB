@@ -118,13 +118,13 @@ $.fn.inputFilter = function (inputFilter) {
     });
 };
 
-$("#txtNombre").inputFilter(function (value) {
-    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
-});
+//$("#txtNombre").inputFilter(function (value) {
+//    return /^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/u.test(value);
+//});
 
-$("#txtCelular").inputFilter(function (value) {
-    return /^\d*$/.test(value) && value.length <= 8;
-});
+//$("#txtCelular").inputFilter(function (value) {
+//    return /^\d*$/.test(value) && value.length <= 8;
+//});
 
 $("#txtnroci").inputFilter(function (value) {
     return /^\d*$/.test(value) && value.length <= 10;

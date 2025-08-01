@@ -33,12 +33,13 @@
                         <thead>
                             <tr>
                                 <th scope="col">Fecha Registro</th>
-                                <th scope="col">Nro Pago</th>
+                                <%--<th scope="col">Nro Pago</th>--%>
                                 <th scope="col">Productor</th>
-                                <th scope="col">Producto - Cantidad</th>
+                                <th scope="col">Cantidad - Producto</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Descuento</th>
-                                <th scope="col">Total USD</th>
+                                <th scope="col">Pago Bs</th>
+                                <th scope="col">Pago USD</th>
                             </tr>
                         </thead>
                         <tbody>

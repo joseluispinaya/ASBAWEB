@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ECamion.cs" />
+    <Compile Include="EDestino.cs" />
     <Compile Include="EDetallePagaduria.cs" />
     <Compile Include="EPagaduria.cs" />
     <Compile Include="EProductor.cs" />

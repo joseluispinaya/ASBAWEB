@@ -77,6 +77,8 @@
     <Content Include="Imagenes\img2.jpeg" />
     <Content Include="Imagenes\imgjo.jpg" />
     <Content Include="Imagenes\logologin.jpg" />
+    <Content Include="Imagenes\logomain.png" />
+    <Content Include="Imagenes\nuevoasb.png" />
     <Content Include="Imagenes\reportt.png" />
     <Content Include="Imagenes\selectedd.jpg" />
     <Content Include="Imagenes\sinimagen.png" />
@@ -89,6 +91,7 @@
     <Content Include="Inicio.aspx" />
     <Content Include="jsfro\Login.js" />
     <Content Include="jsfro\MasterPa.js" />
+    <Content Include="jsfro\PageDestinos.js" />
     <Content Include="jsfro\PagePagaduria.js" />
     <Content Include="jsfro\PageProductores.js" />
     <Content Include="jsfro\PageReportePagadu.js" />

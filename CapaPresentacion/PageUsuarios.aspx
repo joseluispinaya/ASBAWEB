@@ -10,7 +10,7 @@
 
 <div class="card shadow mb-4">
 <div class="card-header py-3 bg-second-primary">
-    <h6 class="m-0 font-weight-bold text-white"><i class="fas fa-address-book"></i> USUARIOS REGISTRADOS</h6>
+    <h6 class="m-0 font-weight-bold text-white"><i class="fas fa-address-book"></i> USUARIOS FYKFKFJHFD</h6>
 </div>
 <div class="card-body" id="loaddet">
     <div class="row gx-4 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 justify-content-start mt-2" id="listar">

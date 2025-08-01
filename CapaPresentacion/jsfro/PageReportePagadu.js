@@ -57,11 +57,12 @@ function listaPagadur() {
         },
         "columns": [
             { "data": "FechaRegistro" },
-            { "data": "Codigo" },
+            /*{ "data": "Codigo" },*/
             { "data": "Productor" },
             { "data": "Producto" },
             { "data": "TotalCalcuStr" },
             { "data": "DescuentoStr" },
+            { "data": "TotalPaBsStr" },
             { "data": "TotalDolarStr" }
         ],
         "language": {

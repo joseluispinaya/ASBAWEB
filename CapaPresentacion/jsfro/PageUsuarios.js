@@ -159,6 +159,10 @@ function cargarRoles() {
         },
         success: function (response) {
             if (response.d.Estado) {
+
+                console.log(response.d.Data);
+                console.log(response);
+
                 $.each(response.d.Data, function (i, row) {
                     if (row.Activo === true) {
                         $("<option>").attr({ "value": row.IdRol }).text(row.Descripcion).appendTo("#cboRol");
@@ -430,6 +434,15 @@ $('#btnGuardarCambios').on('click', function () {
         editarDataAjaxU();
     }
 })
+
+
+//$('#btnGuardarCambios').on('click', function () {
+//    alert("hola nose");
+//    console.log("apretaste el boton");
+//    swal("Mensaje", "Mensaje hola", "warning");
+    
+//})
+
 
 function ReporteUsua(dataVenta) {
     var props = {
