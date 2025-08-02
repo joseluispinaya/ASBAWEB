@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NCamion.cs" />
+    <Compile Include="NExportacion.cs" />
     <Compile Include="NPagaduria.cs" />
     <Compile Include="NProductor.cs" />
     <Compile Include="NUsuario.cs" />

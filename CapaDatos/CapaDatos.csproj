@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="ConexionBD.cs" />
     <Compile Include="DCamion.cs" />
+    <Compile Include="DExportacion.cs" />
     <Compile Include="DPagaduria.cs" />
     <Compile Include="DProductor.cs" />
     <Compile Include="DUsuario.cs" />

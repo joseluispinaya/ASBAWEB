@@ -43,7 +43,9 @@
   <ItemGroup>
     <Compile Include="ECamion.cs" />
     <Compile Include="EDestino.cs" />
+    <Compile Include="EDetalleExportacion.cs" />
     <Compile Include="EDetallePagaduria.cs" />
+    <Compile Include="EExportacion.cs" />
     <Compile Include="EPagaduria.cs" />
     <Compile Include="EProductor.cs" />
     <Compile Include="EReportePagaduria.cs" />

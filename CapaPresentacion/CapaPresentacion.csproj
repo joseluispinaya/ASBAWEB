@@ -92,6 +92,7 @@
     <Content Include="jsfro\Login.js" />
     <Content Include="jsfro\MasterPa.js" />
     <Content Include="jsfro\PageDestinos.js" />
+    <Content Include="jsfro\PageExportacion.js" />
     <Content Include="jsfro\PagePagaduria.js" />
     <Content Include="jsfro\PageProductores.js" />
     <Content Include="jsfro\PageReportePagadu.js" />
@@ -105,6 +106,7 @@
     <Content Include="Login.aspx" />
     <Content Include="PageCamiones.aspx" />
     <Content Include="PageDestinos.aspx" />
+    <Content Include="PageExportacion.aspx" />
     <Content Include="PagePagaduria.aspx" />
     <Content Include="PageProductores.aspx" />
     <Content Include="PageReportePagadu.aspx" />
@@ -1849,6 +1851,13 @@
     </Compile>
     <Compile Include="PageDestinos.aspx.designer.cs">
       <DependentUpon>PageDestinos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageExportacion.aspx.cs">
+      <DependentUpon>PageExportacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageExportacion.aspx.designer.cs">
+      <DependentUpon>PageExportacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="PagePagaduria.aspx.cs">
       <DependentUpon>PagePagaduria.aspx</DependentUpon>

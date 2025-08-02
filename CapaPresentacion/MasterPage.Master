@@ -102,7 +102,7 @@
                 </a>
                 <div id="collapseVenta" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Nueva Registro</a>
+                        <a class="collapse-item" href="PageExportacion.aspx">Nueva Registro</a>
                         <a class="collapse-item" href="#">Historial</a>
                     </div>
                 </div>
