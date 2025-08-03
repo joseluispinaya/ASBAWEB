@@ -89,6 +89,8 @@
     <Content Include="img\undraw_profile_3.svg" />
     <Content Include="img\undraw_rocket.svg" />
     <Content Include="Inicio.aspx" />
+    <Content Include="jsfro\ListaExportaciones.js" />
+    <Content Include="jsfro\ListaPagaduria.js" />
     <Content Include="jsfro\Login.js" />
     <Content Include="jsfro\MasterPa.js" />
     <Content Include="jsfro\PageDestinos.js" />
@@ -103,6 +105,8 @@
     <Content Include="js\vistas\chart-bar-demo.js" />
     <Content Include="js\vistas\chart-pie-demo.js" />
     <Content Include="js\vistas\datatables-demo.js" />
+    <Content Include="ListaExportaciones.aspx" />
+    <Content Include="ListaPagaduria.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="PageCamiones.aspx" />
     <Content Include="PageDestinos.aspx" />
@@ -1823,6 +1827,20 @@
     </Compile>
     <Compile Include="Inicio.aspx.designer.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaExportaciones.aspx.cs">
+      <DependentUpon>ListaExportaciones.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaExportaciones.aspx.designer.cs">
+      <DependentUpon>ListaExportaciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaPagaduria.aspx.cs">
+      <DependentUpon>ListaPagaduria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaPagaduria.aspx.designer.cs">
+      <DependentUpon>ListaPagaduria.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

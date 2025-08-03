@@ -89,7 +89,7 @@
                 <div id="collapseInventario" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="PagePagaduria.aspx">Nuevo Pagaduria</a>
-                        <a class="collapse-item" href="#">Historial Pagaduria</a>
+                        <a class="collapse-item" href="ListaPagaduria.aspx">Lista Pagaduria</a>
                     </div>
                 </div>
             </li>
@@ -103,7 +103,7 @@
                 <div id="collapseVenta" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="PageExportacion.aspx">Nueva Registro</a>
-                        <a class="collapse-item" href="#">Historial</a>
+                        <a class="collapse-item" href="ListaExportaciones.aspx">Lista</a>
                     </div>
                 </div>
             </li>

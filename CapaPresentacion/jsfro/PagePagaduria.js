@@ -440,7 +440,7 @@ function ReportePaga(dataVenta) {
             name: "ASBA-SRL",
             address: "Shinahota Cochabamba",
             phone: "+591 73999726",
-            email: "Exportaciones",
+            email: "Pagaduria",
             email_1: "asba_srl@gmail.com",
             website: "www.asba_srl.com",
         },

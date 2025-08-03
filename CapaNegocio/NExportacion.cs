@@ -38,5 +38,10 @@ namespace CapaNegocio
         {
             return DExportacion.GetInstance().ObtenerDetalleExport(IdExportacion);
         }
+
+        public Respuesta<List<EReporteExportacion>> ListaExportacionesRpt()
+        {
+            return DExportacion.GetInstance().ListaExportacionesRpt();
+        }
     }
 }

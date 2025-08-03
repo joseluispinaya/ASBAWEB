@@ -48,6 +48,7 @@
     <Compile Include="EExportacion.cs" />
     <Compile Include="EPagaduria.cs" />
     <Compile Include="EProductor.cs" />
+    <Compile Include="EReporteExportacion.cs" />
     <Compile Include="EReportePagaduria.cs" />
     <Compile Include="ERol.cs" />
     <Compile Include="ETipoBanana.cs" />

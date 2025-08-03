@@ -342,11 +342,18 @@ $('#btnRegistrarExpor').on('click', function () {
     registrarExportacion();
 });
 
+function ObtenerFechaActual() {
+    const d = new Date();
+    const month = (d.getMonth() + 1).toString().padStart(2, '0');
+    const day = d.getDate().toString().padStart(2, '0');
+    return `${day}/${month}/${d.getFullYear()}`;
+}
+
 function ReportePaga(dataVenta) {
     var props = {
         outputType: jsPDFInvoiceTemplate.OutputType.Save,
         returnJsPDFDocObject: true,
-        fileName: "Reporte_Export_2025",
+        fileName: "Reporte_Exportacion_2025",
         orientationLandscape: false,
         //compress: true,
         logo: {
@@ -368,18 +375,18 @@ function ReportePaga(dataVenta) {
             website: "www.asba_srl.com",
         },
         contact: {
-            label: "Reporte de:",
-            name: "Exportacion",
-            address: "Departamento de finanzas",
-            phone: "4687852",
-            email: "soporte_asba@gmail.com",
-            otherInfo: "entregado",
+            label: "Exportado a:",
+            name: dataVenta.RefDestino.Descripcion,
+            address: "Detalle Camion",
+            phone: `Propietario: ${dataVenta.RefCamion.Propietario}`,
+            email: `Nro placa: ${dataVenta.RefCamion.Placa}`,
+            otherInfo: `Fecha registro: ${dataVenta.FechaRegistro}`,
         },
         invoice: {
             label: "Nro #: ",
             num: dataVenta.Codigo,
-            invDate: `Cambio USD: ${dataVenta.DolarCambio.toString()}`,
-            invGenDate: "Detalles",
+            invDate: `Tipo Cambio USD: ${dataVenta.DolarCambio.toString()}`,
+            invGenDate: `Generado el: ${ObtenerFechaActual()}`,
             headerBorder: false,
             tableBodyBorder: false,
             header: ["Producto", "Cantidad", "Precio", "Total"],
@@ -390,20 +397,20 @@ function ReportePaga(dataVenta) {
                 item.MontoTotal.toString()
             ]),
             invTotalLabel: "Total:",
-            invTotal: dataVenta.CostoTotal.toString(),
+            invTotal: dataVenta.TotalPagado,
             invCurrency: "BOB",
             row1: {
-                col1: 'Total Pagado:',
-                col2: dataVenta.TotalPagado,
-                col3: 'BOB',
+                col1: 'Total en $:',
+                col2: dataVenta.TotalDolares,
+                col3: 'USD',
                 style: {
                     fontSize: 10
                 }
             },
             row2: {
-                col1: 'Total Pagado $:',
-                col2: dataVenta.TotalDolares,
-                col3: 'USD',
+                col1: 'Total Cantidad:',
+                col2: dataVenta.CantidadTotal.toString(),
+                col3: 'UDS',
                 style: {
                     fontSize: 10
                 }
@@ -437,7 +444,7 @@ function generarReporte(IdExportacion) {
         success: function (response) {
             if (response.d.Estado) {
                 var detalle = response.d.Data;
-                console.log(detalle)
+                //console.log(detalle)
                 ReportePaga(detalle)
                 //swal("Mensaje", response.d.Mensaje, "success");
 
