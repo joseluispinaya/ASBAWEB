@@ -89,6 +89,7 @@
     <Content Include="img\undraw_profile_3.svg" />
     <Content Include="img\undraw_rocket.svg" />
     <Content Include="Inicio.aspx" />
+    <Content Include="jsfro\Inicio.js" />
     <Content Include="jsfro\ListaExportaciones.js" />
     <Content Include="jsfro\ListaPagaduria.js" />
     <Content Include="jsfro\Login.js" />
@@ -97,6 +98,7 @@
     <Content Include="jsfro\PageExportacion.js" />
     <Content Include="jsfro\PagePagaduria.js" />
     <Content Include="jsfro\PageProductores.js" />
+    <Content Include="jsfro\PageReporteExport.js" />
     <Content Include="jsfro\PageReportePagadu.js" />
     <Content Include="jsfro\PageUsuarios.js" />
     <Content Include="jsfro\PerfilUser.js" />
@@ -113,6 +115,7 @@
     <Content Include="PageExportacion.aspx" />
     <Content Include="PagePagaduria.aspx" />
     <Content Include="PageProductores.aspx" />
+    <Content Include="PageReporteExport.aspx" />
     <Content Include="PageReportePagadu.aspx" />
     <Content Include="PageUsuarios.aspx" />
     <Content Include="Paginas.aspx" />
@@ -1890,6 +1893,13 @@
     </Compile>
     <Compile Include="PageProductores.aspx.designer.cs">
       <DependentUpon>PageProductores.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PageReporteExport.aspx.cs">
+      <DependentUpon>PageReporteExport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PageReporteExport.aspx.designer.cs">
+      <DependentUpon>PageReporteExport.aspx</DependentUpon>
     </Compile>
     <Compile Include="PageReportePagadu.aspx.cs">
       <DependentUpon>PageReportePagadu.aspx</DependentUpon>

@@ -114,7 +114,7 @@ function listaCamiones() {
 
                 $.each(response.d.Data, function (i, row) {
                     if (row.Activo === true) {
-                        $("<option>").attr({ "value": row.IdCamion }).text(row.Propietario).appendTo("#cboCamion");
+                        $("<option>").attr({ "value": row.IdCamion }).text(row.Propietario + " (Placa: " + row.Placa + ")").appendTo("#cboCamion");
                     }
 
                 })

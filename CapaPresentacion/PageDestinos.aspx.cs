@@ -93,6 +93,27 @@ namespace CapaPresentacion
             }
         }
 
+        // nuevo metodo
+        [WebMethod]
+        public static Respuesta<List<EDestino>> ListaDestinosNuevo()
+        {
+            try
+            {
+                Respuesta<List<EDestino>> Lista = NCamion.GetInstance().ListaDestinosNuevo();
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<EDestino>>()
+                {
+                    Estado = false,
+                    Mensaje = "Error al obtener los camiones: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
+
         [WebMethod]
         public static Respuesta<bool> RegistrarDestino(EDestino oDestino)
         {

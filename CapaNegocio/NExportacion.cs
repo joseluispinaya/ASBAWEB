@@ -43,5 +43,10 @@ namespace CapaNegocio
         {
             return DExportacion.GetInstance().ListaExportacionesRpt();
         }
+
+        public Respuesta<List<EReporteExportacion>> ExportacionesRptFechas(string FechaInicio, string FechaFin)
+        {
+            return DExportacion.GetInstance().ExportacionesRptFechas(FechaInicio, FechaFin);
+        }
     }
 }

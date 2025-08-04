@@ -200,7 +200,7 @@ function cargarDestinos() {
     tabledes = $("#tbDestinos").DataTable({
         responsive: true,
         "ajax": {
-            "url": 'PageDestinos.aspx/ListaDestinos',
+            "url": 'PageDestinos.aspx/ListaDestinosNuevo',
             "type": "POST", // Cambiado a POST
             "contentType": "application/json; charset=utf-8",
             "dataType": "json",
@@ -227,6 +227,7 @@ function cargarDestinos() {
                         return '<span class="badge badge-danger">No Activo</span>';
                 }
             },
+            { "data": "TotalUsos" },
             {
                 "defaultContent": '<button class="btn btn-primary btn-editarde btn-sm"><i class="fas fa-pencil-alt"></i></button>',
                 "orderable": false,

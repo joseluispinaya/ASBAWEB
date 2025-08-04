@@ -280,5 +280,53 @@ namespace CapaDatos
                 };
             }
         }
+
+        public Respuesta<List<EDestino>> ListaDestinosNuevo()
+        {
+            try
+            {
+                List<EDestino> rptLista = new List<EDestino>();
+
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ObtenerDestinosNuevo", con))
+                    {
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new EDestino()
+                                {
+                                    IdDestino = Convert.ToInt32(dr["IdDestino"]),
+                                    Descripcion = dr["Descripcion"].ToString(),
+                                    Activo = Convert.ToBoolean(dr["Activo"]),
+                                    TotalUsos = Convert.ToInt32(dr["TotalUsos"])
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<EDestino>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Destinos obtenidos correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<EDestino>>()
+                {
+                    Estado = false,
+                    Mensaje = "Ocurrió un error: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
+
     }
 }

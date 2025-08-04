@@ -256,5 +256,61 @@ namespace CapaDatos
                 };
             }
         }
+
+        public Respuesta<List<EReporteExportacion>> ExportacionesRptFechas(string FechaInicio, string FechaFin)
+        {
+            try
+            {
+                List<EReporteExportacion> rptLista = new List<EReporteExportacion>();
+
+                using (SqlConnection con = ConexionBD.GetInstance().ConexionDB())
+                {
+                    using (SqlCommand comando = new SqlCommand("usp_ExportacionReporte", con))
+                    {
+                        comando.Parameters.AddWithValue("@FechaInicio", FechaInicio);
+                        comando.Parameters.AddWithValue("@FechaFin", FechaFin);
+                        comando.CommandType = CommandType.StoredProcedure;
+                        con.Open();
+
+                        using (SqlDataReader dr = comando.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                rptLista.Add(new EReporteExportacion()
+                                {
+                                    IdExportacion = Convert.ToInt32(dr["IdExportacion"]),
+                                    Codigo = dr["Codigo"].ToString(),
+                                    FechaRegistro = dr["FechaRegistro"].ToString(),
+                                    PropiCamion = dr["PropiCamion"].ToString(),
+                                    DestinoEx = dr["DestinoEx"].ToString(),
+                                    Producto = dr["BANANAS"].ToString(),
+                                    CantidadTotal = Convert.ToInt32(dr["CantidadTotal"]),
+                                    CostoTotal = float.Parse(dr["CostoTotal"].ToString()),
+                                    DolarCambio = float.Parse(dr["DolarCambio"].ToString()),
+                                    TotalDolares = float.Parse(dr["TotalDolares"].ToString())
+
+                                });
+                            }
+                        }
+                    }
+                }
+                return new Respuesta<List<EReporteExportacion>>()
+                {
+                    Estado = true,
+                    Data = rptLista,
+                    Mensaje = "Lista obtenidos correctamente"
+                };
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier error inesperado
+                return new Respuesta<List<EReporteExportacion>>()
+                {
+                    Estado = false,
+                    Mensaje = "Ocurrió un error: " + ex.Message,
+                    Data = null
+                };
+            }
+        }
     }
 }

@@ -52,5 +52,10 @@ namespace CapaNegocio
         {
             return DCamion.GetInstance().ListaDestinos();
         }
+
+        public Respuesta<List<EDestino>> ListaDestinosNuevo()
+        {
+            return DCamion.GetInstance().ListaDestinosNuevo();
+        }
     }
 }

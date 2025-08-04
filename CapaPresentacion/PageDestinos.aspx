@@ -148,6 +148,7 @@
                                                     <th>Id</th>
                                                     <th>Destinos Reg.</th>
                                                     <th>Estado</th>
+                                                    <th>Cant. Export</th>
                                                     <th>Accion</th>
                                                 </tr>
                                             </thead>

@@ -58,7 +58,7 @@
             </li>
 
             <!-- Nav Item - Administración Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item menu-adminz">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdministracion">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Administración</span>
@@ -67,21 +67,27 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="PageUsuarios.aspx">Usuarios</a>
                         <a class="collapse-item" href="Asociacion.aspx">Asociacion</a>
-                        <a class="collapse-item" href="PageDestinos.aspx">Destinos Camiones</a>
+                        <%--<a class="collapse-item" href="PageDestinos.aspx">Destinos Camiones</a>--%>
                         <%--<a class="collapse-item" href="PageCamiones.aspx">Camiones</a>--%>
                     </div>
                 </div>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item menu-propdz">
                 <a class="nav-link" href="PageProductores.aspx">
                     <i class="fas fa-fw fa-id-card"></i>
                     <span>Productores</span></a>
             </li>
 
+            <li class="nav-item menu-destcamioz">
+                <a class="nav-link" href="PageDestinos.aspx">
+                    <i class="fas fa-fw fa-shipping-fast"></i>
+                    <span>Destinos Camiones</span></a>
+            </li>
+
 
             <!-- Nav Item - Inventario Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item menu-pagaduz">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseInventario">
                     <i class="fas fa-fw fa-clipboard-list"></i>
                     <span>Activos</span>
@@ -95,7 +101,7 @@
             </li>
 
             <!-- Nav Item - Venta Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item menu-exportz">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVenta">
                     <i class="fas fa-fw fa-tags"></i>
                     <span>Exportacion</span>
@@ -109,7 +115,7 @@
             </li>
 
              <!-- Nav Item - Reportes Collapse Menu -->
-             <li class="nav-item">
+             <li class="nav-item menu-reportz">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReportes">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Reportes</span>
@@ -117,7 +123,7 @@
                 <div id="collapseReportes" class="collapse" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="PageReportePagadu.aspx">Reporte Pagaduria</a>
-                        <a class="collapse-item" href="#">Reporte Exportacion</a>
+                        <a class="collapse-item" href="PageReporteExport.aspx">Reporte Exportacion</a>
                     </div>
                 </div>
             </li>
